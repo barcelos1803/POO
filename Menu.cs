@@ -64,7 +64,7 @@ public class Menu
         {
             foreach(Pessoa pe in PessoaControle.GetListas())
             {
-                Console.WriteLine("\n"+pe.Id+" - "+ pe.Nome+" - "+pe.Telefone+"\n");
+                Console.WriteLine("\n"+pe.Id+" - "+ pe.Nome+" - "+pe.Telefone+ " - "+pe.Cidade+"\n");
             };
         }
         void alterarPessoa()
