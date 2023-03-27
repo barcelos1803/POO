@@ -11,11 +11,14 @@ using System.Threading.Tasks;
         public string Nome { get; set; }
         public string Telefone { get; set; }
 
-        public Pessoa(int id, string nome, string telefone)
+        public Cidade Cidade {get; set; }
+
+        public Pessoa(int id, string nome, string telefone, Cidade cidade)
         {
             this.Id = id;
             this.Nome = nome;
             this.Telefone = telefone;
+            this.Cidade = cidade;
         }             
     }
 

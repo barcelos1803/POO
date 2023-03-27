@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Cadastro;
-
+using CadastroCidade;
 public class Menu
 {
     public void tela()
@@ -49,9 +45,19 @@ public class Menu
             string nome = Console.ReadLine();
             
             Console.WriteLine("digite o telefone");
-            string telefone = Console.ReadLine();
+            string telefone = Console.ReadLine(); 
 
-            PessoaControle.add(new Pessoa(id, nome, telefone));
+            Console.WriteLine("digite o codigo da cidade");
+            int idCidade = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("digite o Nome");
+            string nomeCidade = Console.ReadLine();
+
+            Cidade cidade = new Cidade(idCidade, nomeCidade);
+            CidadeControle.add(cidade);
+            
+            Pessoa pessoa = new Pessoa(id, nome, telefone, cidade);
+            PessoaControle.add(pessoa);
             Console.WriteLine("Pessoa cadastrada com sucesso.");
         }
         void listarPessoa()
