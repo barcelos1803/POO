@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Domain.Controllers
 {
+    [ApiController]
     [Route("api/author")]
     public class AuthorController : ControllerBase
     {

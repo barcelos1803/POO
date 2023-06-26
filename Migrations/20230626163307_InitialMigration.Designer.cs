@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AS.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230626151859_InitialMigration")]
+    [Migration("20230626163307_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
 
             modelBuilder.Entity("AuthorBook", b =>
                 {
