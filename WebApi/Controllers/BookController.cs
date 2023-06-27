@@ -12,14 +12,15 @@ namespace Controllers
     public class BookController : ControllerBase
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IAuthorRepository _AuthorRepository;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
 
-        public BookController(IBookRepository bookRepository, IMapper mapper, DataContext context)
+        public BookController(IBookRepository bookRepository, IMapper mapper, IAuthorRepository authorRepository)
         {
             _bookRepository = bookRepository;
             _mapper = mapper;
-            _context = context;
+            _AuthorRepository = authorRepository;
         }
 
         [HttpDelete("{id:int}")]
@@ -131,41 +132,6 @@ namespace Controllers
             {
                 message
             });
-        }
-        [HttpPost("{bookId}/authors")]
-        public async Task<IActionResult> AddAuthorToBook(int bookId, [FromBody] AuthorViewModel authorViewModel)
-        {
-            try
-            {
-                // Primeiro, verifique se o livro existe
-                var book = await _context.Books.FindAsync(bookId);
-                if (book == null)
-                {
-                    return NotFound("Livro não encontrado.");
-                }
-
-                // Mapeie o AuthorViewModel para o modelo de domínio Author
-                var author = _mapper.Map<Author>(authorViewModel);
-
-                // Verifique se o autor já está associado ao livro
-                if (book.Authors.Contains(author))
-                {
-                    return BadRequest("O autor já está associado ao livro.");
-                }
-
-                // Adicione o autor ao livro
-                book.Authors.Add(author);
-
-                // Salve as alterações no banco de dados
-                await _context.SaveChangesAsync();
-
-                return Ok("Autor adicionado ao livro com sucesso.");
-            }
-            catch (Exception ex)
-            {
-                // Trate qualquer erro ocorrido durante o processo
-                return StatusCode(500, $"Ocorreu um erro ao adicionar o autor ao livro: {ex.Message}");
-            }
         }
     }
 }
