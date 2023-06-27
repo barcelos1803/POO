@@ -12,7 +12,6 @@ namespace Domain.ViewModels
        [Required(ErrorMessage = "O campo {0} é obrigatório")]
        public string Descricao { get; set; }
 
-       [Required(ErrorMessage = "O campo {0} é obrigatório")]
        public IList<AuthorViewModel> Authors { get; set; }
     }
 }
