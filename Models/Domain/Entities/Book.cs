@@ -10,7 +10,7 @@ namespace Domain.Entities
         
 
         /* EF Relations */
-        public IList<Author> Authors { get; set; }
+        public IList<Author> Authors { get; set; }= new List<Author>();
         public User User { get; set; }
     }
 }

@@ -60,9 +60,9 @@ namespace Domain.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveUser(UserViewModel userViewModel)
+        public IActionResult SaveUser(UserViewModel model)
         {
-            var user = _mapper.Map<User>(userViewModel);
+            var user = _mapper.Map<User>(model);
             _userRepository.Save(user);
             return HttpMessageOk();
         }

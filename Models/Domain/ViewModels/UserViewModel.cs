@@ -6,6 +6,6 @@ namespace Domain.ViewModels
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Nome { get; set; }
-        IList<BookViewModel> BorrowedBooks { get; set; }
+        public IList<BookViewModel> BorrowedBooks { get; set; }
     }
 }

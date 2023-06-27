@@ -24,6 +24,7 @@ namespace Data.Repositories
             else
             {
                 _context.Books.Remove(book);
+                _context.SaveChanges();
                 return true;
             }
         }
@@ -69,6 +70,7 @@ namespace Data.Repositories
         public void Save(Book entity)
         {
             _context.Books.Add(entity);
+            _context.SaveChanges();
 
         }
 
@@ -80,6 +82,7 @@ namespace Data.Repositories
         public void Update(Book entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

@@ -19,9 +19,12 @@ namespace WebApi.Configuration
     {
         public AutoMapperViewModels()
         {
+            CreateMap<Author, AuthorViewModel>();
             CreateMap<AuthorViewModel, Author>();
-            CreateMap<BookViewModel, Book>();
-            CreateMap<UserViewModel, User>();
+            CreateMap<Book, BookViewModel>();
+            CreateMap<User, UserViewModel>();
+            CreateMap<List<User>, IList<UserViewModel>>()
+                .ConvertUsing((src, dest, context) => src.Select(user => context.Mapper.Map<UserViewModel>(user)).ToList());
         }
     }
 }

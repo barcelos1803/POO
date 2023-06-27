@@ -25,6 +25,7 @@ namespace Data.Repositories
             else
             {
                 _context.Users.Remove(user);
+                _context.SaveChanges();
                 return true;
             }
         }
@@ -56,6 +57,7 @@ namespace Data.Repositories
         public void Save(User entity)
         {
             _context.Users.Add(entity);
+            _context.SaveChanges();
         }
 
         public async Task<IList<User>> SearchAll(Expression<Func<User, bool>> predicate)
@@ -66,6 +68,7 @@ namespace Data.Repositories
         public void Update(User entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

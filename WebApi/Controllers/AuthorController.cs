@@ -39,7 +39,13 @@ namespace Domain.Controllers
         public async Task<IActionResult> GetAllAuthorsAsync()
         {
             var authors = await _authorRepository.GetAllAsync();
-            var authorViewModels = _mapper.Map<IList<AuthorViewModel>>(authors);
+            var authorViewModels = authors.Select(a => new AuthorViewModel
+            {
+                // Mapeie as propriedades relevantes aqui
+                Nome = a.Nome,
+                // Mapeie outras propriedades conforme necessário
+            }).ToList();
+            
             return HttpMessageOk(authorViewModels);
         }
 
