@@ -22,6 +22,8 @@ namespace WebApi.Configuration
             CreateMap<Author, AuthorViewModel>();
             CreateMap<AuthorViewModel, Author>();
             CreateMap<Book, BookViewModel>();
+            CreateMap<BookViewModel, Book>();
+            CreateMap<UserViewModel, User>();
             CreateMap<User, UserViewModel>();
             CreateMap<List<User>, IList<UserViewModel>>()
                 .ConvertUsing((src, dest, context) => src.Select(user => context.Mapper.Map<UserViewModel>(user)).ToList());
